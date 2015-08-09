@@ -1,5 +1,13 @@
 require 'shoulda/context'
 
+unless defined?(::Test::Unit::AssertionFailedError)
+  module Test
+    module Unit
+      AssertionFailedError = ActiveSupport::TestCase::Assertion
+    end
+  end
+end
+
 module ShouldaContextExtensions
   def self.included(base)
     base.class_eval do
